@@ -76,6 +76,16 @@ var parseNewLine = function(str) {
   return str;
  }
 
+
+ var parseImage = function(str) {
+   var imageRegExp = /(!\[.*?]\()(.+?))/g;
+   var stra = [];
+   while((stra = imageRegExp.exec(str)) !== null) {
+      str = str.replace(stra[0], '<img src="' + stra[2] + '">')
+   }
+   return str;
+ }
+
  var parseDel = function(str) {
   var delRegExp = /\{(.*?)\}/
   var stra = [];
@@ -100,6 +110,7 @@ var markdown = {
     str = parseBlockQuote(str);
     str = parseDel(str);
     str = parseCode(str);
+    str = parseImage(str);
     return str;
   }
 };
