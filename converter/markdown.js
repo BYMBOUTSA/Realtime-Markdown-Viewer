@@ -58,7 +58,7 @@ var parseNewLine = function(str) {
   return str;
  }
 
- var parseCodeBlock = function(str) {
+ var parseCode = function(str) {
   var codeRegExp = /`{1}(\w+)`{1}/;
   var stra = [];
   while ((stra = codeRegExp.exec(str)) !== null) {
@@ -96,7 +96,7 @@ var markdown = {
     str = parseStrong(str);
     str = parseHorizontaleLine(str);
     str = parseLink(str);
-    str = parseCodeBlock(str);
+    str = parseCode(str);
     str = parseBlockQuote(str);
     str = parseDel(str);
     str = parseCode(str);
